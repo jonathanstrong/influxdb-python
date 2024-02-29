@@ -219,7 +219,7 @@ class DataFrameClient(InfluxDBClient):
             else:
                 key = (name, tuple(sorted(tags.items())))
             df = pd.DataFrame(data)
-            df.time = pd.to_datetime(df.time)
+            df.time = pd.to_datetime(df.time, format='ISO8601')
 
             if data_frame_index:
                 df.set_index(data_frame_index, inplace=True)
